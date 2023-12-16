@@ -1,11 +1,6 @@
-import pickle
-import PyQt6.QtCore
 import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
-import matplotlib as mpl
 import numpy as np
-import xarray as xr
-import pandas as pd
 
 proj0 = ccrs.PlateCarree( central_longitude=0 )
 
@@ -16,8 +11,8 @@ v = np.fromfile('v.dat' )
 shape = ( 61,240 )
 
 x = x.reshape( shape )
-y = y.reshape( shape )
-v = v.reshape( shape )
+y = np.flip(y.reshape( shape ), axis=0)
+v = np.flip(v.reshape( shape ), axis=0)
 
 levels = [-4.0, -2.0, -1.0, -0.5, 0.0, 0.5, 1.0, 2.0, 4.0]
 
